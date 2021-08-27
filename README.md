@@ -126,6 +126,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
+| <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
 | <a name="provider_oci"></a> [oci](#provider\_oci) | 4.39.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
@@ -138,6 +139,8 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [null_resource.remote-exec-windows](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.wait_for_cloudinit](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [oci_core_instance.Compute](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance) | resource |
 | [oci_core_volume_backup_policy_assignment.backup_policy_assignment_BootVolume](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_volume_backup_policy_assignment) | resource |
 | [random_string.instance_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
@@ -161,7 +164,7 @@ No modules.
 | <a name="input_cloudinit_ps1"></a> [cloudinit\_ps1](#input\_cloudinit\_ps1) | Describes cloudinit.ps1 powershell script placeholder variable | `string` | `"cloudinit.ps1"` | no |
 | <a name="input_compute_availability_domain_list"></a> [compute\_availability\_domain\_list](#input\_compute\_availability\_domain\_list) | Defines the availability domain list where OCI artifact will be created. This is a numeric value greater than 0 | `list(any)` | n/a | yes |
 | <a name="input_compute_display_name_base"></a> [compute\_display\_name\_base](#input\_compute\_display\_name\_base) | Defines the compute and hostname Label for created compute | `any` | n/a | yes |
-| <a name="input_compute_nsg_name"></a> [compute\_nsg\_name](#input\_compute\_nsg\_name) | Name of the NSG associated to the compute | `any` | n/a | yes |
+| <a name="input_compute_nsg_name"></a> [compute\_nsg\_name](#input\_compute\_nsg\_name) | Name of the NSG associated to the compute | `string` | `""` | no |
 | <a name="input_fault_domain_name"></a> [fault\_domain\_name](#input\_fault\_domain\_name) | Describes the fault domain to be used by machine | `list(any)` | <pre>[<br>  "FAULT-DOMAIN-1",<br>  "FAULT-DOMAIN-2",<br>  "FAULT-DOMAIN-3"<br>]</pre> | no |
 | <a name="input_fingerprint"></a> [fingerprint](#input\_fingerprint) | API Key Fingerprint for user\_ocid derived from public API Key imported in OCI User config | `any` | n/a | yes |
 | <a name="input_instance_image_ocid"></a> [instance\_image\_ocid](#input\_instance\_image\_ocid) | Defines the OCID for the OS image to be used on artifact creation. Extract OCID from: https://docs.cloud.oracle.com/iaas/images/ or designated custom image OCID created by packer | `any` | n/a | yes |
@@ -173,6 +176,7 @@ No modules.
 | <a name="input_is_flex_shape"></a> [is\_flex\_shape](#input\_is\_flex\_shape) | Boolean that describes if the shape is flex or not | `bool` | `false` | no |
 | <a name="input_is_nsg_required"></a> [is\_nsg\_required](#input\_is\_nsg\_required) | Boolean that describes if an NSG is associated to the machine | `bool` | `false` | no |
 | <a name="input_is_winrm_configured_for_image"></a> [is\_winrm\_configured\_for\_image](#input\_is\_winrm\_configured\_for\_image) | Defines if winrm is being used in this installation | `string` | `"true"` | no |
+| <a name="input_is_winrm_configured_for_ssl"></a> [is\_winrm\_configured\_for\_ssl](#input\_is\_winrm\_configured\_for\_ssl) | Use the https 5986 port for winrm by default If that fails with a http response error: 401 - invalid content type, the SSL may not be configured correctly In that case you can switch to http 5985 by setting this to false, and configuring winrm to AllowUnencrypted traffic | `string` | `"true"` | no |
 | <a name="input_is_winrm_configured_with_ssl"></a> [is\_winrm\_configured\_with\_ssl](#input\_is\_winrm\_configured\_with\_ssl) | Use the https 5986 port for winrm by default. If that fails with a http response error: 401 - invalid content type, the SSL may not be configured correctly | `string` | `"true"` | no |
 | <a name="input_label_zs"></a> [label\_zs](#input\_label\_zs) | n/a | `list(any)` | <pre>[<br>  "0",<br>  ""<br>]</pre> | no |
 | <a name="input_network_subnet_name"></a> [network\_subnet\_name](#input\_network\_subnet\_name) | Defines the subnet display name where this resource will be created at | `any` | n/a | yes |

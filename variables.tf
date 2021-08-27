@@ -159,6 +159,7 @@ variable "windows_compute_network_compartment_name" {
 
 variable "compute_nsg_name" {
   description = "Name of the NSG associated to the compute"
+  default = ""
 }
 
 variable "instance_shape_config_memory_in_gbs" {
@@ -199,6 +200,14 @@ variable "network_subnet_name" {
 
 variable "vcn_display_name" {
   description = "VCN Display name to execute lookup"
+}
+
+
+# Use the https 5986 port for winrm by default
+# If that fails with a http response error: 401 - invalid content type, the SSL may not be configured correctly
+# In that case you can switch to http 5985 by setting this to false, and configuring winrm to AllowUnencrypted traffic
+variable "is_winrm_configured_for_ssl" {
+  default = "true"
 }
 
 /********** Datasource related variables **********/

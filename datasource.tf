@@ -121,5 +121,5 @@ locals {
   nsg_id = length(data.oci_core_network_security_groups.NSG.network_security_groups) > 0 ? data.oci_core_network_security_groups.NSG.network_security_groups[0].id : ""
 
   # Local accessor for powershell executor
-  powershell             = "powershell.exe"
+  powershell = "powershell.exe"
 }

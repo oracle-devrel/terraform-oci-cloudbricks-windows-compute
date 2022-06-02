@@ -159,7 +159,7 @@ variable "windows_compute_network_compartment_name" {
 
 variable "compute_nsg_name" {
   description = "Name of the NSG associated to the compute"
-  default = ""
+  default     = ""
 }
 
 variable "instance_shape_config_memory_in_gbs" {

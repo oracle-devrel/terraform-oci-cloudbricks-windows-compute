@@ -80,19 +80,19 @@ ssh_public_is_path               = true
 ssh_private_is_path              = true
 compute_availability_domain_list = ["aBCD:foo-REGION-1-AD-1", "aBCD:foo-REGION-1-AD-2","aBCD:foo-REGION-1-AD-3" ]
 
-network_subnet_name                     = "My_Subnet"
-assign_public_ip_flag                   = true
-fault_domain_name                       = ["FAULT-DOMAIN-1", "FAULT-DOMAIN-2", "FAULT-DOMAIN-3"]
-bkp_policy_boot_volume                  = "gold"
+network_subnet_name                       = "My_Subnet"
+assign_public_ip_flag                     = true
+fault_domain_name                         = ["FAULT-DOMAIN-1", "FAULT-DOMAIN-2", "FAULT-DOMAIN-3"]
+bkp_policy_boot_volume                    = "gold"
 windows_compute_instance_compartment_name = "MY_INSTANCE_COMPARTMENT"
 windows_compute_network_compartment_name  = "MY_NETWORK_COMPARTMENT"
-vcn_display_name                        = "MY_VCN"
-num_instances                           = 1
-is_nsg_required                         = true
-compute_nsg_name                        = "My_NSG"
-compute_display_name_base               = "winmachine"
-instance_image_ocid                     = "ocid1.image.oc1.sa-santiago-1.aaaaaaaaaawshehk5nk3h7tt3gj6obzwjeohbmknuslro4biuqk7enaaihna" #Image: Windows-Server-2019-Standard-Edition-VM-2021.04.13-0
-instance_shape                          = "VM.Standard2.1"
+vcn_display_name                          = "MY_VCN"
+num_instances                             = 1
+is_nsg_required                           = true
+compute_nsg_name                          = "My_NSG"
+compute_display_name_base                 = "winmachine"
+instance_image_ocid                       = "ocid1.image.oc1.sa-santiago-1.aaaaaaaaaawshehk5nk3h7tt3gj6obzwjeohbmknuslro4biuqk7enaaihna" #Image: Windows-Server-2019-Standard-Edition-VM-2021.04.13-0
+instance_shape                            = "VM.Standard2.1"
 ########## ARTIFACT SPECIFIC VARIABLES ##########
 ########## SAMPLE TFVAR FILE ##########
 ########## FLEX SHAPE NOT IN USE ##########
@@ -105,14 +105,15 @@ instance_shape                          = "VM.Standard2.1"
 - Any boot volume backup policy available in your tenancy can be used, whereas this can be default or a custom one
 - The number of instances can be overriden by providing a number on variable num_instances. This variable can never be less than 1
 - NSG creation is optonal. If NSG is required or not for your instance. If NSG is required for instance, provide variable `is_nsg_required` as true and pass on an NSG Name on variable `compute_nsg_name`. Otherwise, set `is_nsg_required` as false and either drop/delete the variable `compute_nsg_name` or blank it out by passing `""` as argument
-- A full OCID of the image wanted to be used to create compute is required. A full list of OCID is available in the [following link](https://docs.oracle.com/en-us/iaas/images/)
-- If FLEX image is required, variable `is_flex_shape` should be set to `true`
+- A full OCID of the image is required to provision the compute. A full list of OCID is available in the [following link](https://docs.oracle.com/en-us/iaas/images/). **Note: Make sure to select the Windows `Standard-Edition-VM` version, otherwise certain image shapes will not work.**
+- If FLEX shape is required, variable `is_flex_shape` should be set to `true`
   - Mandatory `instance_shape_config_ocpu` and `instance_shape_config_memory_in_gbs` are required when flex image is in use
-  - If instance_shape is not flex, variable `is_flex_shape` should be set to `false` and then drop the usage of `instance_shape_config_ocpu` and `instance_shape_config_memory_in_gbs` variables by drop/delete or passing out `""` as argument
-- Upon creating the machine set, be sure to grab the initial password from the output of the commandline when executed. The password of Windows will be in the output of the module and will look like this: 
+  - If instance_shape is not flex, variable `is_flex_shape` should be set to `false` and then drop the usage of `instance_shape_config_ocpu` and `instance_shape_config_memory_in_gbs` variables by deleting them or using `""` as the value.
+- Upon creating the machine set, be sure to grab the initial password from the output of the commandline when executed. The password of Windows will be in the output of the module and will look like this:
   ```shell
-   instance_password   = [
+   instance_password = [
       - "n][HKRajhJJ7:nZq",
+    ]
   ```
 ---
 
@@ -126,9 +127,9 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
-| <a name="provider_oci"></a> [oci](#provider\_oci) | 4.39.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.1.1 |
+| <a name="provider_oci"></a> [oci](#provider\_oci) | 4.77.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.2.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules

@@ -67,6 +67,8 @@ resource "oci_core_instance" "Compute" {
       ocpus         = var.instance_shape_config_ocpus
     }
   }
+
+  preserve_boot_volume = false
 }
 
 
